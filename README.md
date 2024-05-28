@@ -73,21 +73,6 @@ a large change that spans across multiple projects.
 $ repo sync PROJECT
 ```
 
-## Generating your sign keys ##
-
-From [Android Documentation](https://source.android.com/docs/core/ota/sign_builds?hl=en#:~:text=the%20test%2Dkeys%20are,you%20have%20access%20to.) :
-> Since the test-keys are publicly known, anybody can sign their own .apk files with the same keys, which may allow them to replace or hijack system apps built into your OS image. For this reason it is critical to sign any publicly released or deployed Android OS image with a special set of release-keys that only you have access to.
-
-Start from your working directory and generate the keys:
-```
-mkdir ~/.android-certs
-subject='/C=FR/ST=Whatever/L=Somewhere/O=SomethingOS/OU=SomethingOS/CN=SomethingOS/emailAddress=android@somethingos.com'
-for x in releasekey platform shared media networkstack; do \
-    ./development/tools/make_key ~/.android-certs/$x "$subject"; \
-  done
-```
-And this will create the signing keys
-
 ## Building ##
 
 The bundled builder tool `./rom-build.sh` handles all the building steps for the specified device
@@ -101,7 +86,7 @@ automatically. As the device value, you just feed it with the device codename (f
 # Go to the root of the source tree...
 $ cd WORKSPACE
 # ...and run the builder tool.
-$ ./rom-build.sh DEVICE -z -s ~/.android-certs/
+$ ./rom-build.sh DEVICE -z -s ./vendor/something/keys
 ```
 ### Writing good commit messages ###
 
