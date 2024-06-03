@@ -46,10 +46,6 @@
            fetch="https://gitlab.com/somethingos"
            revision="uvite" />
 
-  <remote name="something-maintainer"
-           fetch="git@github.com:SomethingOS"
-           revision="main" />
-
   <remote  name="github"
            fetch="https://github.com" />
 
